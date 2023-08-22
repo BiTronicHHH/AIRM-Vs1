@@ -4,6 +4,9 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    // screens: {
+    //   'cus-lg': '1150px'
+    // },
     extend: {
       fontFamily: {
         odibee: ["Odibee Sans", "cursive"],

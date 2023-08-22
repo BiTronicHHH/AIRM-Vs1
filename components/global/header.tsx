@@ -5,7 +5,7 @@ import { Menu, Popover, Transition } from "@headlessui/react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { arrayToTree, classNames, getLinkProps, useOnce } from "../../utils/misc";
-import { FaLayerGroup, FaTimes, FaSearch, FaSearchengin } from 'react-icons/fa';
+import { FaLayerGroup, FaTimes, FaSearch, FaSearchengin, FaBlog } from 'react-icons/fa';
 
 const themeColors = {
     blue: {
@@ -242,7 +242,7 @@ export default function Header() {
     const Component = useOnce("Header") ? motion.div : "div";
 
     return (
-        <div className='pt-5 pb-5 sm:pt-12 px-0 sm:px-6 flex flex-col w-full shadow-card-upload-black border-b border-b-[#3c91c2] mb-3'>
+        <div className='pt-5 pb-5 sm:pt-12 px-0 sm:px-6 flex flex-col w-full shadow-card-upload-black mb-3'>
             <div className='flex w-full justify-between items-center'>
                 <Link
                     href=""
@@ -253,8 +253,8 @@ export default function Header() {
                         <Image src='/logoTemp.svg' alt='' className="shrink-0" style={{ width: "200px" }} width={200} height={100} />
                     </div>
                 </Link>
-                <div className="py-2 border rounded-md w-full relative text-[black] font-Urbansit ml-4 mr-4 md:ml-6 md:mr-10 lg:ml-10 lg:mr-16">
-                    <input className="flex w-full  input-box bg-[transparent] text-white h-10 px-5 rounded-lg focus:outline-none text-2xl"
+                <div className="py-2 border border-[#555] rounded-md w-full relative text-[black] font-Urbansit ml-4 mr-4 md:ml-6 md:mr-10 lg:ml-10 lg:mr-16">
+                    <input className="flex input-box bg-[transparent] text-white h-10 pl-5 rounded-lg focus:outline-none focus:bg-[transparent] text-lg md:text-2xl"
                         type="search" name="search" placeholder="Search" />
                     <button type="submit" className="absolute right-0 top-0 mt-4 mr-4 text-dark-grey">
                         <FaSearchengin className='text-2xl text-[#bbb]' />
@@ -268,12 +268,13 @@ export default function Header() {
             <div className='md:flex font-semibold w-full hidden md:px-10 lg:px-20 justify-between mt-3 items-center'>
                 <Link
                     href=""
-                    className={classNames(
+                    className={`${classNames(
                         mobileNavItemClass,
                         themeColors["blue"].mobileMenu.item["normal"]
-                    )}
+                    )} flex items-center`}
                 >
-                    Blog
+                    <FaBlog />
+                    <div>Blog</div>
                 </Link>
                 <Link
                     href=""
