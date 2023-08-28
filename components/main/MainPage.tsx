@@ -1,90 +1,73 @@
 import React from 'react'
 import Slider from '../slide/Slider'
+import Title from './Title'
+import TitleSecond from './TitleSecond'
+import Link from 'next/link'
 
-interface Props {
-    category?: string;
-    imageUrl: string;
-    description: string;
-    price: number;
-}
-
-export default function () {
+export default function MainPage () {
     const freeRes = [
-        { category: '', imageUrl: '/aiImage/1 (1).jfif', description: 'Blue Simple Drawings', price: 3.99 },
-        { category: '', imageUrl: '/aiImage/1 (1).jpg', description: 'Blue Simple Drawings', price: 5.99 },
-        { category: '', imageUrl: '/aiImage/1 (1).png', description: 'Blue Simple Drawings', price: 32.99 },
-        { category: '', imageUrl: '/aiImage/1 (2).jfif', description: 'Blue Simple Drawings', price: 12.99 },
-        { category: '', imageUrl: '/aiImage/1 (2).png', description: 'Blue Simple Drawings', price: 4.99 },
+        { category: '', imageUrl: ['/aiImage/1 (1).jfif', '/aiImage/1 (1).jpg', '/aiImage/1 (1).png', '/aiImage/1 (11).jfif' ], description: 'Blue Simple Drawings', sales: 3 , thumb: 3},
+        { category: '', imageUrl: ['/aiImage/1 (19).jfif', '/aiImage/1 (1).jpg', '/aiImage/1 (1).png', '/aiImage/1 (11).jfif' ], description: 'Blue Simple Drawings', sales: 5 , thumb: 4},
+        { category: '', imageUrl: ['/aiImage/1 (4).jfif', '/aiImage/1 (1).jpg', '/aiImage/1 (1).png', '/aiImage/1 (11).jfif' ], description: 'Blue Simple Drawings', sales: 32, thumb: 3 },
+        { category: '', imageUrl: ['/aiImage/1 (11).jfif', '/aiImage/1 (1).jpg', '/aiImage/1 (1).png', '/aiImage/1 (11).jfif' ], description: 'Blue Simple Drawings', sales: 12, thumb: 23 },
+        { category: '', imageUrl: ['/aiImage/1 (2).png', '/aiImage/1 (1).jpg', '/aiImage/1 (1).png', '/aiImage/1 (11).jfif' ], description: 'Blue Simple Drawings', sales: 4 , thumb: 31},
     ]
     const hotRes = [
-        { category: '', imageUrl: '/aiImage/1 (3).jfif', description: 'Blue Simple Drawings', price: 23.99 },
-        { category: '', imageUrl: '/aiImage/1 (3).png', description: 'Blue Simple Drawings', price: 32.99 },
-        { category: '', imageUrl: '/aiImage/1 (4).jfif', description: 'Blue Simple Drawings', price: 12.99 },
-        { category: '', imageUrl: '/aiImage/1 (19).jfif', description: 'Blue Simple Drawings', price: 4.99 },
-        { category: '', imageUrl: '/aiImage/1 (5).jfif', description: 'Blue Simple Drawings', price: 52.99 },
-        { category: '', imageUrl: '/aiImage/1 (6).jfif', description: 'Blue Simple Drawings', price: 1.99 },
-    ]
-    const chatRes = [
-        { category: '', imageUrl: '/aiImage/1 (7).jfif', description: 'Blue Simple Drawings', price: 23.99 },
-        { category: '', imageUrl: '/aiImage/1 (8).jfif', description: 'Blue Simple Drawings', price: 12.99 },
-        { category: '', imageUrl: '/aiImage/1 (9).jfif', description: 'Blue Simple Drawings', price: 52.99 },
-        { category: '', imageUrl: '/aiImage/1 (10).jfif', description: 'Blue Simple Drawings', price: 1.99 },
-        { category: '', imageUrl: '/aiImage/1 (11).jfif', description: 'Blue Simple Drawings', price: 52.99 },
-        { category: '', imageUrl: '/aiImage/1 (12).jfif', description: 'Blue Simple Drawings', price: 1.99 },
-    ]
-    const busiRes = [
-        { category: '', imageUrl: '/aiImage/1 (13).jfif', description: 'Blue Simple Drawings', price: 23.99 },
-        { category: '', imageUrl: '/aiImage/1 (14).jfif', description: 'Blue Simple Drawings', price: 12.99 },
-        { category: '', imageUrl: '/aiImage/1 (15).jfif', description: 'Blue Simple Drawings', price: 52.99 },
-        { category: '', imageUrl: '/aiImage/1 (16).jfif', description: 'Blue Simple Drawings', price: 1.99 },
-        { category: '', imageUrl: '/aiImage/1 (17).jfif', description: 'Blue Simple Drawings', price: 52.99 },
-        { category: '', imageUrl: '/aiImage/1 (18).jfif', description: 'Blue Simple Drawings', price: 1.99 },
-        { category: '', imageUrl: '/aiImage/1 (19).jfif', description: 'Blue Simple Drawings', price: 1.99 },
+        { category: '', imageUrl: ['/aiImage/1 (3).jfif', '/aiImage/1 (1).jpg', '/aiImage/1 (1).png', '/aiImage/1 (11).jfif' ], description: 'Blue Simple Drawings', sales: 23, thumb: 3 },
+        { category: '', imageUrl: ['/aiImage/1 (1).jfif', '/aiImage/1 (1).jpg', '/aiImage/1 (3).png', '/aiImage/1 (11).jfif' ], description: 'Blue Simple Drawings', sales: 32, thumb: 32 },
+        { category: '', imageUrl: ['/aiImage/1 (4).jfif', '/aiImage/1 (1).jpg', '/aiImage/1 (1).png', '/aiImage/1 (3).jfif' ], description: 'Blue Simple Drawings', sales: 12, thumb: 23 },
+        { category: '', imageUrl: ['/aiImage/1 (6).jfif', '/aiImage/1 (1).jpg', '/aiImage/1 (1).png', '/aiImage/1 (5).jfif' ], description: 'Blue Simple Drawings', sales: 4 , thumb: 23},
+        { category: '', imageUrl: ['/aiImage/1 (5).jfif', '/aiImage/1 (1).jpg', '/aiImage/1 (1).png', '/aiImage/1 (11).jfif' ], description: 'Blue Simple Drawings', sales: 52, thumb: 33 },
     ]
     return (
-        <div className='w-full bg-[white] font-Urbansit flex flex-col gap-5 py-8'>
+        <div className='w-full items-center bg-[white] flex flex-col gap-16 py-8'>
+            <Title />
             <div className='w-full flex flex-col'>
-                <div className='mx-4 w-full pb-2 font-semibold text-2xl text-[#555] border-b-2 border-b-[#555]'>
+                <div className='md:mx-40 mb-4 mx-12 w-full pb-4 font-semibold  text-3xl title-shadow text-[#555]'>
                     Free Resources Daily
                 </div>
                 <Slider compArray={freeRes} />
             </div>
             <div className='w-full flex flex-col'>
-                <div className='mx-4 w-full pb-2 font-semibold text-2xl text-[#555] border-b-2 border-b-[#555]'>
+                <div className='md:mx-40 mb-4 mx-12 w-full pb-4 font-semibold text-3xl  title-shadow text-[#555]'>
                     Hottest MidJourney prompts
                 </div>
                 <Slider compArray={hotRes} />
             </div>
             <div className='w-full flex flex-col'>
-                <div className='mx-4 w-full pb-2 font-semibold text-2xl text-[#555] border-b-2 border-b-[#555]'>
+                <div className='md:mx-40 mb-4 mx-12 w-full pb-4 font-semibold text-3xl  title-shadow text-[#555]'>
                     Hottest Chat GPT prompts
-                </div>
-                <Slider compArray={chatRes} />
-            </div>
-            <div className='w-full flex flex-col'>
-                <div className='mx-4 w-full pb-2 font-semibold text-2xl text-[#555] border-b-2 border-b-[#555]'>
-                    Latest MidJourney prompts
-                </div>
-                <Slider compArray={busiRes} />
-            </div>
-            <div className='w-full flex flex-col'>
-                <div className='mx-4 w-full pb-2 font-semibold text-2xl text-[#555] border-b-2 border-b-[#555]'>
-                    Latest Chat GPT prompts
                 </div>
                 <Slider compArray={freeRes} />
             </div>
             <div className='w-full flex flex-col'>
-                <div className='mx-4 w-full pb-2 font-semibold text-2xl text-[#555] border-b-2 border-b-[#555]'>
+                <div className='md:mx-40 mb-4 mx-12 w-full pb-4 font-semibold text-3xl  title-shadow text-[#555]'>
+                    Latest MidJourney prompts
+                </div>
+                <Slider compArray={hotRes} />
+            </div>
+            <div className='w-full flex flex-col'>
+                <div className='md:mx-40 mb-4 mx-12 w-full pb-4 font-semibold text-3xl  title-shadow text-[#555]'>
+                    Latest Chat GPT prompts
+                </div>
+                <Slider compArray={freeRes} />
+            </div>
+            <TitleSecond />
+            <div className='w-full flex flex-col'>
+                <div className='md:mx-40 mb-4 mx-12 w-full pb-4 font-semibold text-3xl  title-shadow text-[#555]'>
                     Realistic
                 </div>
                 <Slider compArray={hotRes} />
             </div>
             <div className='w-full flex flex-col'>
-                <div className='mx-4 w-full pb-2 font-semibold text-2xl text-[#555] border-b-2 border-b-[#555]'>
+                <div className='md:mx-40 mb-4 mx-12 w-full pb-4 font-semibold text-3xl  title-shadow text-[#555]'>
                     Business
                 </div>
-                <Slider compArray={chatRes} />
+                <Slider compArray={freeRes} />
             </div>
+            <Link href="" className="mt-8 mb-16 relative font-semibold px-8 py-4 text-white hover:bg-[#0349a4] rounded-md shadow-card-upload-black bg-[#0084FF] text-xl">
+                Browse Marketplace
+            </Link>
         </div>
     )
 }

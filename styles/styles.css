@@ -38,10 +38,24 @@
 		background-position: 0% 25%;
 	}
 }
-/* .react-multiple-carousel__arrow {
+.react-multiple-carousel__arrow {
 	opacity: 0 !important;
-	padding: 320px 100px;
+	z-index: 5 !important;
 }
 .react-multiple-carousel__arrow:hover {
 	opacity: 1 !important;
-} */
+} 
+
+.text-glow {
+	animation: glow 3s linear infinite alternate;
+  }
+  
+  @keyframes glow {
+	from {
+	  text-shadow: 0 0 10px currentColor;
+	}
+	to {
+	  text-shadow: 0 0 50px currentColor;
+	}
+  }
+  

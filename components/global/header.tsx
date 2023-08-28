@@ -1,11 +1,12 @@
 import Image from 'next/image'
 import { Fragment } from 'react'
 import Link from 'next/link'
-import { Menu, Popover, Transition } from "@headlessui/react";
+import { Popover, Transition } from "@headlessui/react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { arrayToTree, classNames, getLinkProps, useOnce } from "../../utils/misc";
-import { FaLayerGroup, FaTimes, FaSearch, FaSearchengin, FaBlog } from 'react-icons/fa';
+import { FaLayerGroup, FaTimes, FaSearch, FaSearchengin, FaBlog, FaMicroblog, FaNewspaper, FaNapster, FaGofore, FaQuestion, FaPhoneAlt, FaLocationArrow, FaChessKing } from 'react-icons/fa';
+import Menu from './Menu';
 
 const themeColors = {
     blue: {
@@ -29,7 +30,8 @@ const themeColors = {
 };
 const DesktopMenu = () => {
     // const theme = useContext(ThemeContext)
-    const buttonClass = "p-2 text-xl font-semibold font-header transition-colors";
+    const buttonClass = "p-2 text-xl font-semibold font-header transition-colors cursor-pointer";
+    const [show, setShow] = useState(false);
     return (
         <Popover.Group className="max-xl:hidden flex items-center space-x-5 sm:space-x-10 bg-[white]">
             <div className="flex space-x-0 sm:space-x-6">
@@ -60,15 +62,17 @@ const DesktopMenu = () => {
                 >
                     Sell
                 </Link>
-                <Link
-                    href=""
+                <div
                     className={classNames(
                         buttonClass,
-                        themeColors["blue"].desktopMenu.item["normal"]
+                        themeColors["blue"].desktopMenu.item["normal"],
+                        'relative'
                     )}
+                    onClick={()=>setShow(!show)}
                 >
                     Sign In
-                </Link>
+                    <Menu buttonClicked={show}/>
+                </div>
                 <div className="flex space-x-2">
                 </div>
             </div>
@@ -81,7 +85,7 @@ const mobileNavItemClass = "block px-2 py-3 text-xl font-header";
 const MobileMenu = () => {
     // const theme = useContext(ThemeContext)
     return (
-        <Popover>
+        <Popover className='z-50'>
             <Popover.Button className="block xl:hidden font-medium focus-[white]">
                 <span className="sr-only">Open main menu</span>
                 <FaLayerGroup className="h-8 w-8 mr-6 text-[#555] hover:text-[black]" aria-hidden="true" />
@@ -175,6 +179,17 @@ const MobileMenu = () => {
                                             themeColors["blue"].mobileMenu.item["normal"]
                                         )}
                                     >
+                                        Prompt Marketplace
+                                    </Link>
+                                </Fragment>
+                                <Fragment>
+                                    <Link
+                                        href=""
+                                        className={classNames(
+                                            mobileNavItemClass,
+                                            themeColors["blue"].mobileMenu.item["normal"]
+                                        )}
+                                    >
                                         Blog
                                     </Link>
                                 </Fragment>
@@ -242,7 +257,7 @@ export default function Header() {
     const Component = useOnce("Header") ? motion.div : "div";
 
     return (
-        <div className='pt-5 pb-5 sm:pt-12 px-0 sm:px-6 flex flex-col w-full shadow-card-upload-black mb-3'>
+        <div className='py-3 sm:pt-12 px-0 sm:px-6 flex flex-col w-full shadow-card-upload-black z-50'>
             <div className='flex w-full justify-between items-center'>
                 <Link
                     href=""
@@ -250,11 +265,11 @@ export default function Header() {
                     className="flex shrink-0  w-[50px] md:w-[200px] overflow-hidden"
                 >
                     <div className=" shrink-0">
-                        <Image src='/logoTemp.svg' alt='' className="shrink-0" style={{ width: "200px" }} width={200} height={100} />
+                        <Image src='/logo.png' alt='' className="shrink-0 md:pl-6" style={{ width:"100px" }} width={100} height={100} />
                     </div>
                 </Link>
-                <div className="py-2 border border-[#555] rounded-md w-full relative text-[black] font-Urbansit ml-4 mr-4 md:ml-6 md:mr-10 lg:ml-10 lg:mr-16">
-                    <input className="flex input-box bg-[transparent] text-white h-10 pl-5 rounded-lg focus:outline-none focus:bg-[transparent] text-lg md:text-2xl"
+                <div className="py-2 border border-[#555] rounded-md w-full relative text-[black] font-header ml-4 mr-4 md:ml-6 md:mr-10 lg:ml-10 lg:mr-16">
+                    <input className="outline-none border-none focus:border-none active:outline-none flex input-box bg-[transparent] text-black h-10 pl-5 rounded-lg focus:outline-none focus:bg-[transparent] text-lg md:text-2xl"
                         type="search" name="search" placeholder="Search" />
                     <button type="submit" className="absolute right-0 top-0 mt-4 mr-4 text-dark-grey">
                         <FaSearchengin className='text-2xl text-[#bbb]' />
@@ -265,7 +280,7 @@ export default function Header() {
                     <MobileMenu />
                 </div>
             </div>
-            <div className='md:flex font-semibold w-full hidden md:px-10 lg:px-20 justify-between mt-3 items-center'>
+            <div className='lg:flex font-semibold w-full hidden md:px-10 lg:px-20 justify-between mt-3 items-center'>
                 <Link
                     href=""
                     className={`${classNames(
@@ -273,44 +288,58 @@ export default function Header() {
                         themeColors["blue"].mobileMenu.item["normal"]
                     )} flex items-center`}
                 >
-                    <FaBlog />
-                    <div>Blog</div>
+                    <FaChessKing className='mr-3 text-2xl' />
+                    <div className='text-center leading-tight'>Prompt<br /> Marketplace</div>
                 </Link>
                 <Link
-                    href=""
-                    className={classNames(
+                    href="/blog"
+                    className={`${classNames(
                         mobileNavItemClass,
                         themeColors["blue"].mobileMenu.item["normal"]
-                    )}
+                    )} flex items-center`}
                 >
-                    AI News
+                    <FaMicroblog className='mr-2 text-3xl' />
+                    <div>Blog</div>
                 </Link>
                 <Link
                     href=""
                     className={`${classNames(
                         mobileNavItemClass,
                         themeColors["blue"].mobileMenu.item["normal"]
-                    )} text-center`}
+                    )} flex items-center`}
                 >
-                    Free Chat GPT<br /> Prompts
+                    <FaNewspaper className='mr-2 text-3xl' />
+                    <div>AI News</div>
                 </Link>
                 <Link
                     href=""
-                    className={classNames(
+                    className={`${classNames(
                         mobileNavItemClass,
                         themeColors["blue"].mobileMenu.item["normal"]
-                    )}
+                    )} flex items-center flex-nowrap`}
                 >
-                    FAQ
+                    <FaGofore className='mr-3 text-3xl' />
+                    <div className=' text-center leading-tight'>Free Chat GPT<br /> Prompts</div>
+                </Link>
+                <Link
+                    href="/faq"
+                    className={`${classNames(
+                        mobileNavItemClass,
+                        themeColors["blue"].mobileMenu.item["normal"]
+                    )} flex items-center`}
+                >
+                    <FaQuestion className='mr-2 text-2xl' />
+                    <div>FAQ</div>
                 </Link>
                 <Link
                     href=""
-                    className={classNames(
+                    className={`${classNames(
                         mobileNavItemClass,
                         themeColors["blue"].mobileMenu.item["normal"]
-                    )}
+                    )} flex items-center`}
                 >
-                    Contact
+                    <FaPhoneAlt className='mr-2 text-2xl' />
+                    <div>Contact</div>
                 </Link>
             </div>
         </div>

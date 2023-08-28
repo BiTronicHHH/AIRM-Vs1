@@ -1,12 +1,20 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+/** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/flowbite/**/*.js"
   ],
   theme: {
     // screens: {
     //   'cus-lg': '1150px'
     // },
+    fontFamily: {
+      body: ['finlandica-font-normal', ...defaultTheme.fontFamily.sans],
+      header: ['finlandica-font-normal', ...defaultTheme.fontFamily.serif],
+    },
     extend: {
       fontFamily: {
         odibee: ["Odibee Sans", "cursive"],
@@ -30,12 +38,23 @@ module.exports = {
       }
     },
     colors: {
+      "cus-pink": "#ff1d46",
       "main-bg": "#000C49",
       "bg-secondary": "#130B22",
       "bg-purple": '#0A0219',
       "main-blue": "#1845F3",
-      "card-bg": '#010518'
+      "card-bg": '#010518',
+      "custom-orange": "#D84C10",
+      "egg-plant": "#232627",
+      'nav-grey': "#404551",
+      "dark-grey": '#96999E',
+      "custom-purple": '#8E55EA',
+      "custom-blue": '#3E90F0',
+      "custom-green": '#52BA69',
+      "dodger-purple": "#8C6584",
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ]
 }

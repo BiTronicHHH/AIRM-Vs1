@@ -8,16 +8,17 @@ import SliderComp from './SliderComp';
 
 interface Props {
     category?: string;
-    imageUrl: string;
+    imageUrl: string[];
     description: string;
-    price: number;
+    sales: number;
+    thumb: number;
 }
 
 const responsive = {
     desktop: {
         breakpoint: { max: 3000, min: 1024 },
-        items: 4,
-        slidesToSlide: 4 // optional, default to 1.
+        items: 5,
+        slidesToSlide: 5 // optional, default to 1.
     },
     tablet: {
         breakpoint: { max: 1024, min: 768 },
@@ -35,7 +36,7 @@ const responsive = {
 const Slider: React.FC<{ compArray: Props[] }> = ({ compArray }) => {
     
     return (
-        <div className='relative'>
+        <div className='relative ml-4 md:ml-32'>
 
             <Carousel
                 responsive={responsive}
@@ -45,11 +46,10 @@ const Slider: React.FC<{ compArray: Props[] }> = ({ compArray }) => {
                 infinite={true}
                 partialVisible={false}
                 dotListClass="custom-dot-list-style"
-
             >
                 {/* Add your carousel slides here */}
                 {compArray.map((comp, index) => (
-                    <SliderComp key={index} category={comp.category} imageUrl={comp.imageUrl} description={comp.description} price={comp.price} />
+                    <SliderComp key={index} category={comp.category} imageUrl={comp.imageUrl} description={comp.description} sales={comp.sales} thumb={comp.thumb} />
                 ))}
             </Carousel>
         </div>
