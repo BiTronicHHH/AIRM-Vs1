@@ -7,7 +7,7 @@ import { useState } from "react";
 import { arrayToTree, classNames, getLinkProps, useOnce } from "../../utils/misc";
 import { FaLayerGroup, FaTimes, FaSearch, FaSearchengin, FaBlog, FaMicroblog, FaNewspaper, FaNapster, FaGofore, FaQuestion, FaPhoneAlt, FaLocationArrow, FaChessKing } from 'react-icons/fa';
 import Menu from './Menu';
-
+import Logo from './Logo';
 const themeColors = {
     blue: {
         mobileMenu: {
@@ -68,10 +68,10 @@ const DesktopMenu = () => {
                         themeColors["blue"].desktopMenu.item["normal"],
                         'relative'
                     )}
-                    onClick={()=>setShow(!show)}
+                    onClick={() => setShow(!show)}
                 >
                     Sign In
-                    <Menu buttonClicked={show}/>
+                    <Menu buttonClicked={show} />
                 </div>
                 <div className="flex space-x-2">
                 </div>
@@ -260,13 +260,10 @@ export default function Header() {
         <div className='py-3 sm:pt-12 px-0 sm:px-6 flex flex-col w-full shadow-card-upload-black z-50'>
             <div className='flex w-full justify-between items-center'>
                 <Link
-                    href=""
-                    target="_blank"
-                    className="flex shrink-0  w-[50px] md:w-[200px] overflow-hidden"
+                    href="/"
+                    className="flex shrink-0 overflow-visible"
                 >
-                    <div className=" shrink-0">
-                        <Image src='/logo.png' alt='' className="shrink-0 md:pl-6" style={{ width:"100px" }} width={100} height={100} />
-                    </div>
+                    <Logo />
                 </Link>
                 <div className="py-2 border border-[#555] rounded-md w-full relative text-[black] font-header ml-4 mr-4 md:ml-6 md:mr-10 lg:ml-10 lg:mr-16">
                     <input className="outline-none border-none focus:border-none active:outline-none flex input-box bg-[transparent] text-black h-10 pl-5 rounded-lg focus:outline-none focus:bg-[transparent] text-lg md:text-2xl"
