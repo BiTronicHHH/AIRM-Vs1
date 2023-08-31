@@ -161,12 +161,12 @@ export default function signup() {
                 </div>
 
                 <div className="flex items-center mb-4 mt-4">
-                    <input id="disabled-checkbox" type="checkbox" className="w-4 h-4 text-gray-600 bg-[#4d495044] focus:before:bg-black border-gray-300 text-orange rounded focus:ring-2 orange-check" checked={isTerms} onChange={() => setIsTerms(!isTerms)} />
+                    <input type="checkbox" className="w-4 h-4 text-gray-600 bg-[#4d495044] focus:before:bg-black border-gray-300 text-orange rounded focus:ring-2 orange-check" checked={isTerms} onChange={() => setIsTerms(!isTerms)} />
                     <label htmlFor="disabled-checkbox" className="ml-2 text-sm text-slight-text dark:text-gray-500">I agree to the Swush <Link href="/terms" className='font-medium text-white'>Terms of Use</Link></label>
                 </div>
 
                 <div className="flex items-center">
-                    <input id="disabled-checked-checkbox" type="checkbox" value="" className="w-4 h-4 text-gray-600 bg-[#4d495044] border-gray-300 rounded  focus:ring-2" checked={isPrivacy} onChange={() => setIsPrivacy(!isPrivacy)} />
+                    <input type="checkbox" value="" className="w-4 h-4 text-gray-600 bg-[#4d495044] border-gray-300 rounded  focus:ring-2" checked={isPrivacy} onChange={() => setIsPrivacy(!isPrivacy)} />
                     <label htmlFor="disabled-checked-checkbox" className="ml-2 text-sm text-slight-text dark:text-gray-500">I agree to the Swush <Link href="/privacy" className='font-medium text-white'>Privacy policy</Link></label>
                 </div>
                 <button className='flex items-center justify-center border hover:text-white rounded-lg w-full mt-7 py-3 font-bold' onClick={sign}>Join Now  &nbsp;<FaChevronRight className='text-xs' /></button>
