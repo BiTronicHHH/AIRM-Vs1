@@ -52,6 +52,8 @@ module.exports = {
       "custom-blue": '#3E90F0',
       "custom-green": '#52BA69',
       "dodger-purple": "#8C6584",
+      "custom-sky": "#01dcff",
+      "cus-yellow": '#ff9e0c'
     },
   },
   plugins: [

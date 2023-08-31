@@ -4,7 +4,7 @@ import Footer from '@/components/global/footer'
 import ContactUs from '@/components/contact/Contact'
 export default function price() {
   return (
-    <div className='bg-[white]'>
+    <div className='bg-[white] font-body'>
         <Header />
         <ContactUs />
         <Footer />

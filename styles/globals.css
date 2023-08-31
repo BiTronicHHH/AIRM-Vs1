@@ -148,3 +148,125 @@ a {
 .visible {
   opacity: 1;
 }
+
+.wrapper-project {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.card-project {
+  position: relative;
+  background: linear-gradient(to top, #7f1bd1ce 0%, #00a2ffdc 50%, #f027189a 100%);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+  cursor:  pointer !important;
+}
+.card-project:hover{
+  cursor: pointer !important;
+  animation: glowCard 1s linear infinite alternate;
+}
+
+@keyframes glowCard {
+  from {
+    box-shadow: 0 0 10px #3b06b682;
+  }
+  to {
+    box-shadow: 0 0 20px #aaa;
+  }
+}
+.poster {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer !important;
+}
+
+.poster::before {
+  content: '';
+  position: absolute;
+  bottom: -45%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: .3s;
+}
+
+.card-project:hover .poster::before {
+  bottom: 0;
+}
+
+.poster .img-project {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  transition: .3s;
+  background-color: transparent;
+}
+
+.card-project:hover .poster .img-project {
+  transform: scale(1.1);
+}
+
+.details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  padding: 1.5em 1.5em 2em;
+  background: rgba(31, 226, 252, 0.13);
+  backdrop-filter: blur(16px) saturate(120%);
+  transition: .3s;
+  color: white;
+  z-index: 2;
+}
+
+.details h1,
+.details h2 {
+  font-weight: 700;
+}
+
+.details h1 {
+  font-size: 1.5em;
+  margin-bottom: 5px;
+}
+
+.details h2 {
+  font-weight: 400;
+  font-size: 1em;
+  margin-bottom: 10px;
+  opacity: .6;
+}
+
+.details .tags {
+  display: flex;
+  gap: .375em;
+  margin-bottom: .875em;
+  font-size: .85em;
+}
+
+.details .tags span {
+  padding: .15rem .65rem;
+  border: 1.5px solid rgb(255, 255, 255);
+  border-radius: 4px;
+  border-radius: 50px;
+}
+
+.details .desc {
+  line-height: 1.5;
+  margin-bottom: 1em;
+}
+

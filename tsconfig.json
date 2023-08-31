@@ -19,6 +19,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/blog/DoubleCarousel.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/blog/DoubleCarousel.jsx", "components/individualBlog/SwiperCarousel.jsx", "components/utils/misc.jsx"],
   "exclude": ["node_modules"]
 }
