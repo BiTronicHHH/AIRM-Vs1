@@ -19,6 +19,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/blog/DoubleCarousel.jsx", "components/individualBlog/SwiperCarousel.jsx", "components/utils/misc.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/blog/DoubleCarousel.jsx", "components/individualBlog/SwiperCarousel.jsx", "components/utils/misc.jsx", "components/freeGPT/FreeGpt.jsx", "components/freeGPT/FreeGpt.jsx"],
   "exclude": ["node_modules"]
 }

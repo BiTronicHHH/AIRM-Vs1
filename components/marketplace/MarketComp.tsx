@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaCoins, FaThumbsUp } from 'react-icons/fa';
+import { FaCoins, FaThumbsUp, FaTimes } from 'react-icons/fa';
 
 // {
 //     image: [
@@ -32,7 +32,7 @@ interface Props {
 }
 const MarketComp: React.FC<Props> = ({ image, title, author, sells, likes, AI, CPrompt, Sub, Tag, desc }) => {
     return (
-        <div className='w-full flex flex-col mb-4 px-4 py-6 lg:px-20 shadow-card-upload-black rounded-xl'>
+        <div className={`flex w-full flex-col mb-4 px-4 py-6 lg:px-20 shadow-card-upload-black rounded-xl`}>
             <div className='w-full flex flex-col items-center lg:items-start lg:flex-row '>
                 <div className=' w-[60%] md:w-[70%] lg:w-[50%] lg:mr-6 shrink-0'>
                     <img src={image[0]} className='w-full aspect-video object-cover object-center rounded-xl shadow-card-upload-black' />
@@ -59,12 +59,12 @@ const MarketComp: React.FC<Props> = ({ image, title, author, sells, likes, AI, C
                         <div className=' text-dark-grey'>AI  Model / Category / Sub-category / Tag:</div>
                         <div>{AI} / {CPrompt} / {Sub} / {Tag}</div>
                     </div>
-                    <div className='flex w-full justify-center my-4'>
+                    <div className='flex flex-col w-full items-center my-4'>
                         <div className='text-sm md:text-base rounded-lg py-1 px-6 border cursor-pointer border-[white] shadow-card-upload-black hover:shadow-card-upload font-semibold bg-gradient-to-r from-[#01dcff] to-[#6f01fe] text-white'>
                             Review Prompt
                         </div>
+                        <div className='text-dark-grey text-xs my-2 italic font-light text-center mb-2'>Once you have bought it, you will get the prompt file.<br />Just remember, you need to already have access to Midjourney to use this file.</div>
                     </div>
-                    <div className='text-dark-grey text-xs italic font-light text-center mb-2'>Once you have bought it, you will get the prompt file.<br />Just remember, you need to already have access to Midjourney to use this file.</div>
                 </div>
             </div>
             <div className='w-full flex md:my-4 lg:my-10 justify-center'>

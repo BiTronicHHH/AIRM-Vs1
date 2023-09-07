@@ -56,7 +56,7 @@ const recentData = [
 export default function RecentArticles() {
     return (
         <div className='flex fixed bottom-0 right-0 z-10 shadow-card-upload-black flex-col w-[450px] rounded-tl-2xl h-[500px] overflow-y-scroll bg-gradient-to-b from-[#101a30] to-[#042831] '>
-            <div className='fixed w-full z-20'>
+            <div className='fixed w-full z-20 '>
                 <div className='flex w-[450px] justify-center py-4 z-[12] rounded-tl-2xl bg-gradient-to-r from-[#2a7a86] to-[#500343] items-center font-semibold tracking-wider text-2xl text-white'>
                     <div className='w-[450px] flex justify-center'>Recent Articles</div>
                 </div>

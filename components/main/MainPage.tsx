@@ -20,7 +20,7 @@ export default function MainPage () {
         { category: '', imageUrl: ['/aiImage/1 (5).jfif', '/aiImage/1 (1).jpg', '/aiImage/1 (1).png', '/aiImage/1 (11).jfif' ], description: 'Blue Simple Drawings', sales: 52, thumb: 33 },
     ]
     return (
-        <div className='w-full items-center bg-[white] flex flex-col gap-16 py-8'>
+        <div className='w-full items-center bg-[white] flex flex-col gap-16 py-8 lg:pt-[74px]'>
             <Title />
             <div className='w-full flex flex-col'>
                 <div className='md:mx-40 mb-4 mx-12 w-full pb-4 font-semibold  text-3xl title-shadow text-[#555]'>

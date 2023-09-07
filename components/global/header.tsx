@@ -22,7 +22,13 @@ const themeColors = {
         },
         desktopMenu: {
             item: {
-                normal: "text-[#555] hover:text-[black]",
+                normal: "text-white hover:scale-105",
+                active: "text-[black]",
+            },
+        },
+        subMenu: {
+            item: {
+                normal: "text-white hover:scale-105 hover:text-white",
                 active: "text-[black]",
             },
         },
@@ -33,8 +39,8 @@ const DesktopMenu = () => {
     const buttonClass = "p-2 text-xl font-semibold font-header transition-colors cursor-pointer";
     const [show, setShow] = useState(false);
     return (
-        <Popover.Group className="max-xl:hidden flex items-center space-x-5 sm:space-x-10 bg-[white]">
-            <div className="flex space-x-0 sm:space-x-6">
+        <Popover.Group className="max-xl:hidden flex items-center space-x-5 sm:space-x-10 ">
+            <div className="flex space-x-0 sm:space-x-6 z-10">
                 <Link
                     href=""
                     className={classNames(
@@ -54,7 +60,7 @@ const DesktopMenu = () => {
                     Pricing
                 </Link>
                 <Link
-                    href=""
+                    href="/sell"
                     className={classNames(
                         buttonClass,
                         themeColors["blue"].desktopMenu.item["normal"]
@@ -88,7 +94,7 @@ const MobileMenu = () => {
         <Popover className='z-50'>
             <Popover.Button className="block xl:hidden font-medium focus-[white]">
                 <span className="sr-only">Open main menu</span>
-                <FaLayerGroup className="h-8 w-8 mr-6 text-[#555] hover:text-[black]" aria-hidden="true" />
+                <FaLayerGroup className="h-8 w-8 mr-6 text-[#424fc5] hover:text-white" aria-hidden="true" />
             </Popover.Button>
 
             <Transition
@@ -106,7 +112,7 @@ const MobileMenu = () => {
                 >
                     <div
                         className={classNames(
-                            "relative rounded-lg shadow-md ring-1 ring-black ring-opacity-5 overflow-hidden bg-gradient-to-bl",
+                            "relative rounded-lg  ring-1 ring-black ring-opacity-5 overflow-hidden bg-[#ccc]",
                             themeColors["blue"].mobileMenu.bg
                         )}
                     >
@@ -151,7 +157,7 @@ const MobileMenu = () => {
                                 </Fragment>
                                 <Fragment>
                                     <Link
-                                        href=""
+                                        href="/sell"
                                         className={classNames(
                                             mobileNavItemClass,
                                             themeColors["blue"].mobileMenu.item["normal"]
@@ -228,7 +234,7 @@ const MobileMenu = () => {
                                 </Fragment>
                                 <Fragment>
                                     <Link
-                                        href=""
+                                        href="/contact"
                                         className={classNames(
                                             mobileNavItemClass,
                                             themeColors["blue"].mobileMenu.item["normal"]
@@ -257,18 +263,18 @@ export default function Header() {
     const Component = useOnce("Header") ? motion.div : "div";
 
     return (
-        <div className='py-3 sm:pt-12 px-0 sm:px-6 flex flex-col w-full shadow-card-upload-black z-50'>
-            <div className='flex w-full justify-between items-center'>
+        <div className='flex flex-col w-full z-50 relative'>
+            <div className="flex w-full justify-between bg-gradient-to-r from-[#5726c9] to-[#a82ae1] items-center px-0 sm:px-12  py-4  pt-6 shadow-card-upload-black z-[100]">
                 <Link
                     href="/"
                     className="flex shrink-0 overflow-visible"
                 >
                     <Logo />
                 </Link>
-                <div className="py-2 border border-[#555] rounded-md w-full relative text-[black] font-header ml-4 mr-4 md:ml-6 md:mr-10 lg:ml-10 lg:mr-16">
-                    <input className="outline-none border-none focus:border-none active:outline-none flex input-box bg-[transparent] text-black h-10 pl-5 rounded-lg focus:outline-none focus:bg-[transparent] text-lg md:text-2xl"
+                <div className=" w-full relative text-[black] font-header ml-4 mr-4 md:ml-6 md:mr-10 lg:ml-10 lg:mr-16">
+                    <input className="outline-none border-none focus:border-none active:outline-none flex input-box bg-gradient-to-r from-[#6130c4] to-[#9a32d8] text-white py-2 pl-5 pr-16 rounded-xl w-full focus:outline-none focus:bg-[transparent] text-lg md:text-xl shadow-card-upload-black placeholder:text-[#6b9ed8]"
                         type="search" name="search" placeholder="Search" />
-                    <button type="submit" className="absolute right-0 top-0 mt-4 mr-4 text-dark-grey">
+                    <button type="submit" className="absolute right-0 top-0 mt-3 mr-4 text-dark-grey">
                         <FaSearchengin className='text-2xl text-[#bbb]' />
                     </button>
                 </div>
@@ -277,12 +283,16 @@ export default function Header() {
                     <MobileMenu />
                 </div>
             </div>
-            <div className='lg:flex font-semibold w-full hidden md:px-10 lg:px-20 justify-between mt-3 items-center'>
+            <div className='lg:block hidden absolute triangle left-0 top-[-30px] z-[100]'>
+            </div>
+            <div className='lg:block hidden absolute triangle-right right-0 top-[-30px] z-[100]'>
+            </div>
+            <div className=' absolute bottom-[-82px] lg:flex font-semibold w-full hidden md:px-10 lg:px-20 justify-between items-center bg-[black] py-1'>
                 <Link
                     href=""
                     className={`${classNames(
                         mobileNavItemClass,
-                        themeColors["blue"].mobileMenu.item["normal"]
+                        themeColors["blue"].subMenu.item["normal"]
                     )} flex items-center`}
                 >
                     <FaChessKing className='mr-3 text-2xl' />
@@ -292,7 +302,7 @@ export default function Header() {
                     href="/blog"
                     className={`${classNames(
                         mobileNavItemClass,
-                        themeColors["blue"].mobileMenu.item["normal"]
+                        themeColors["blue"].subMenu.item["normal"]
                     )} flex items-center`}
                 >
                     <FaMicroblog className='mr-2 text-3xl' />
@@ -302,17 +312,17 @@ export default function Header() {
                     href=""
                     className={`${classNames(
                         mobileNavItemClass,
-                        themeColors["blue"].mobileMenu.item["normal"]
+                        themeColors["blue"].subMenu.item["normal"]
                     )} flex items-center`}
                 >
                     <FaNewspaper className='mr-2 text-3xl' />
                     <div>AI News</div>
                 </Link>
                 <Link
-                    href=""
+                    href="/freeGpt"
                     className={`${classNames(
                         mobileNavItemClass,
-                        themeColors["blue"].mobileMenu.item["normal"]
+                        themeColors["blue"].subMenu.item["normal"]
                     )} flex items-center flex-nowrap`}
                 >
                     <FaGofore className='mr-3 text-3xl' />
@@ -322,17 +332,17 @@ export default function Header() {
                     href="/faq"
                     className={`${classNames(
                         mobileNavItemClass,
-                        themeColors["blue"].mobileMenu.item["normal"]
+                        themeColors["blue"].subMenu.item["normal"]
                     )} flex items-center`}
                 >
                     <FaQuestion className='mr-2 text-2xl' />
                     <div>FAQ</div>
                 </Link>
                 <Link
-                    href=""
+                    href="/contact"
                     className={`${classNames(
                         mobileNavItemClass,
-                        themeColors["blue"].mobileMenu.item["normal"]
+                        themeColors["blue"].subMenu.item["normal"]
                     )} flex items-center`}
                 >
                     <FaPhoneAlt className='mr-2 text-2xl' />

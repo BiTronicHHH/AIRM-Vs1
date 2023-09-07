@@ -13,7 +13,7 @@ export default function ContactUs() {
     }
     const [open, setOpen] = React.useState(false);
     return (
-        <div className='flex flex-col md:flex-row shadow-card-upload-black w-full relative'>
+        <div className='flex flex-col md:flex-row shadow-card-upload-black w-full relative lg:pt-[144px]'>
             <img className='absolute top-0 left-0 h-full w-full' src='/bg3.jpg' />
             <div className='flex flex-col items-center md:w-[50%] md:pt-40 py-16 z-10'>
                 <div className='font-header text-glow lg:text-6xl md:text-4xl text-center text-3xl px-2 lg:mb-8 md:mb-4 font-bold z-10 text-[white] tracking-wider'>
@@ -83,7 +83,7 @@ export default function ContactUs() {
                     />
                     <label
                         htmlFor="message"
-                        className="text-gray-500 font-light dark:text-gray-50 mb-3"
+                        className="text-gray-500 font-light dark:text-gray-50 mt-6 mb-3"
                     >
                         Message<span className="text-red-500">*</span>
                     </label>
