@@ -6,7 +6,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import CarouselComp from "./CarouselComp";
 import React, { useState } from "react";
 import { classNames } from "../../utils/misc";
-import styles from "./styles.module.css";
 
 const projects = [
     {
@@ -109,7 +108,6 @@ const SwiperCarousel = () => {
                             <div
                                 className={classNames(
                                     "absolute inset-0 transition-all",
-                                    styles.glow,
                                     i == currentSlide && "inset-[-20%]"
                                 )}
                             >

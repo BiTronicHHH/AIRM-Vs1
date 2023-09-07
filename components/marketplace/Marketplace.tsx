@@ -1,6 +1,7 @@
 import React from 'react'
 import MarketComp from './MarketComp';
-import { FaFilter, FaSlidersH, FaTimes } from 'react-icons/fa';
+import { FaSlidersH, FaTimes } from 'react-icons/fa';
+
 interface Props {
   image: string[];
   title: string;
@@ -390,8 +391,10 @@ const dataTemp = [
     Tag: 'architecture'
   },
 ];
+
 export default function Marketplace() {
   const [currentRows, setCurrentRows] = React.useState<number>(4);
+  const foxRef = React.useRef<HTMLDivElement | null>(null);
   const [children, setChildren] = React.useState(dataTemp.map((data, index) => (
     <div className='w-full outline-2 p-1 rounded-lg shadow-card-upload' key={index}>
       <img src={data.image[0]} className='w-full h-full rounded-lg' alt='' onClick={() => handleClick(index, data)} />
@@ -403,7 +406,6 @@ export default function Marketplace() {
     const newScreenSize = window.innerWidth;
     setScreenSize(newScreenSize);
   };
-
   React.useEffect(() => {
     handleResize();
     // Only add event listener on the client side
@@ -411,7 +413,7 @@ export default function Marketplace() {
       window.addEventListener('resize', handleResize);
     }
     console.log(screenSize, 'screenSizeScreenSzie')
-    let newRows;
+    let newRows = 4;
     // Check if the screen size is between 768px and 1024px
     if (screenSize > 1024) {
       newRows = 4;
@@ -436,9 +438,8 @@ export default function Marketplace() {
 
   const handleClick = (index: number, data: Props) => {
     const newScreenSize = window.innerWidth;
-
     console.log(screenSize, 'screenSizeScreenSzie')
-    let newRows;
+    let newRows = 4;
     // Check if the screen size is between 768px and 1024px
     if (newScreenSize > 1024) {
       newRows = 4;
@@ -449,7 +450,10 @@ export default function Marketplace() {
       newRows = 1;
     }
     const newChild = (
-      <div key='newDiv' className=' md:col-span-2 lg:col-span-4 flex items-center flex-col'>
+      <div key='newDiv' className=' md:col-span-2 lg:col-span-4 flex items-center flex-col relative bg-white'>
+        <div className='p-2 absolute top-4 right-4 rounded-full cursor-pointer bg-[#dddddddd] hover:bg-[#2b5f795e] shrink-0 flex justify-center items-center z-[5]' onClick={()=>setChildren(children.filter(child => child.key !== 'newDiv'))}>
+          <FaTimes className='' />
+        </div>
         <MarketComp image={data.image} title={data.title} author={data.author} sells={data.sells} likes={data.likes} AI={data.AI} CPrompt={data.CPrompt} Sub={data.Sub} Tag={data.Tag} desc={data.desc} />
       </div>
     );
@@ -463,11 +467,11 @@ export default function Marketplace() {
 
 
   return (
-    <div className='flex font-header w-full shadow-card-upload-black py-4 px-4'>
+    <div className='flex font-header w-full shadow-card-upload-black py-4 px-4 lg:pt-[144px]'>
       <div className='fixed left-0 bottom-4 pl-3 pr-4 py-3 cursor-pointer rounded-r-full bg-gradient-to-r from-[#01dcff] to-[#fe01d4] text-white outline-2 outline-double text-xl shadow-hover-start-btn ' onClick={() => setFilter(true)}>
         <FaSlidersH />
       </div>
-      <div className={`${ filter ? 'flex' : 'hidden' } flex-col  font-semibold text-white fixed left-0 bottom-0 h-full z-10 overflow-y-auto rounded-r-2xl shadow-card-upload-black bg-gradient-to-b from-[#101a30fa] to-[#042831e5]`}>
+      <div className={`${filter ? 'flex' : 'hidden'} flex-col  font-semibold text-white fixed left-0 bottom-0 h-full z-10 overflow-y-auto rounded-r-2xl shadow-card-upload-black bg-gradient-to-b from-[#101a30fa] to-[#042831e5]`}>
         <div className='flex justify-end mr-2 mt-3  rounded-full '>
           <div className='p-2 rounded-full cursor-pointer hover:bg-[#2b5f795e] shrink-0 flex justify-center items-center' onClick={() => setFilter(false)}>
             <FaTimes className='' />
@@ -549,7 +553,7 @@ export default function Marketplace() {
           </div>
         </div>
       </div>
-      <div className='grid lg:grid-cols-4 md:grid-cols-2 gap-4' id='imgPlace'>
+      <div className='grid lg:grid-cols-4 md:grid-cols-2 gap-4' id='imgPlace' ref={foxRef}>
         {children}
       </div>
     </div>

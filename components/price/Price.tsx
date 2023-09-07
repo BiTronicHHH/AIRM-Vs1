@@ -61,7 +61,7 @@ const annualStarter = [
 export default function Price() {
     const [monthly, setMonthly] = React.useState(true);
     return (
-        <div className='flex flex-col items-center justify-center py-20 h-full relative shadow-card-upload-black'>
+        <div className='lg:pt-[144px] flex flex-col items-center justify-center py-20 h-full relative shadow-card-upload-black'>
             <img className='absolute top-0 left-0 h-full w-full' src='/bg2.jpg' />
             <div className='flex items-center cursor-pointer z-10 mb-14'>
                 <div className={`shadow-card-upload-black text-[white] font-semibold  rounded-l-md flex items-center active:opacity-10 justify-center py-2 w-52 ${!monthly ? 'text-white bg-gradient-to-r to-[#3072ff] from-[#191ec7] z-30' : 'bg-[transparent] text-slight-text'}`} onClick={() => { setMonthly(false) }}>Annual Commitment</div>

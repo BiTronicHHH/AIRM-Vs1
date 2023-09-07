@@ -59,3 +59,45 @@
 	}
   }
   
+  .rti--container {
+	background-color: transparent !important;
+	border: 0px solid white !important;
+  }
+
+  .rti--tag {
+	padding: 10px !important;
+	border-radius: 100px !important;
+	font-weight: 800;
+	background: linear-gradient(to right, #01dcff 0%, #fe01d4 100%) !important;
+  }
+  .rti--input {
+	background-color: transparent !important;
+	border: 0px !important;
+	outline: 0px !important;
+  }
+  .rti--input:focus {
+	border: 2px solid white !important;
+	border-radius: 100px !important;
+	max-width: 100px !important;
+	outline: 1px solid white !important;
+  }
+  .triangle {
+	width: 0;
+	height: 0;
+	border-top: 50px solid transparent;
+	border-right: 76px solid transparent;
+	border-bottom: 128px solid black;
+  }
+
+  .triangle-right {
+	width: 0;
+	height: 0;
+	border-top: 50px solid transparent;
+	border-left: 76px solid transparent;
+	border-bottom: 128px solid black;
+  }
+
+  /* bg-gradient-to-r from-[#090605] via-[#03a0cd] via-[30%] via-[#7e1283] via-[70%] to-[#030a5d] */
+  .header-grad {
+	background: linear-gradient( to right bottom, #6034c9 0%, #03a0cd 30%, #7e1283 60%, #a82ae1 100%);
+  }
